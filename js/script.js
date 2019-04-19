@@ -13,18 +13,21 @@ $('#other-title').hide();
 //if js puns is selected
 //hide tomato, steel blue, dim grey
 
-//$('#design').val('js-puns');
-//$('#color').val('tomato').hide();
+//if heart js is selected
+//hide cornflower blue, dark slate grey, gold
 
 $("#design").change((e)=>{
 	
 		if ( $(e.target).val() == "js puns" ) { 
-			$("#color tomato").hide();
+			$('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
         }
+		if ( $(e.target).val() == "heart js" ) { 
+			$('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
+        }
+		
 });
 
-//if heart js is selected
-//hide cornflower blue, dark slate grey, gold
+
 
 // If the user selects "Theme - JS Puns" then the color menu should only display "Cornflower Blue," "Dark Slate Grey," and "Gold."
 
