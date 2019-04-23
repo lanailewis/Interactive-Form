@@ -16,14 +16,24 @@ $('#other-title').hide();
 //if heart js is selected
 //hide cornflower blue, dark slate grey, gold
 
+const cornflowerBlue = $('#color option[value="cornflowerblue"]').addClass('cornflower-color');
+const tomato = $('#color option[value="tomato"]').addClass('tomato-color');
+
 $("#design").change((e)=>{
 	
 		if ( $(e.target).val() == "js puns" ) { 
+			document.getElementsByClassName('cornflower-blue').selected = true;
 			$('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
+			$('#color option[value="cornflower blue"],[value="darkslategrey"],[value="gold"]').show();
+			document.getElementsByClassName('cornflower-blue').selected = true;
         }
 		if ( $(e.target).val() == "heart js" ) { 
+			document.getElementsByClassName('tomato').selected = true;
 			$('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
+			$('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').show();
+			document.getElementsByClassName('tomato-color').selected = true;
         }
+		
 		
 });
 
