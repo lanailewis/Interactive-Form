@@ -21,6 +21,7 @@ $("#design").change((e)=>{
 		if ( $(e.target).val() == "js puns" ) { 
 			$('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
         }
+		$(#color).selectmenu('refresh');
 		if ( $(e.target).val() == "heart js" ) { 
 			$('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
         }
