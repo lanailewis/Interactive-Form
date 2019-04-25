@@ -65,27 +65,45 @@ $('.activities').change ((e)=>{
     if(($jsFrameworks).prop( 'checked')) {
 		$($express).attr('disabled', true); 
 		$($buildTools).attr('disabled', true); 
-    }
+    } else {
+		$($express).attr('disabled', false); 
+		$($buildTools).attr('disabled', false); 
+	}
 	if(($jsLibs).prop( 'checked')) {
 		$($node).attr('disabled', true); 
 		$($npm).attr('disabled', true); 
-    } 
+    } else {
+		$($node).attr('disabled', false); 
+		$($npm).attr('disabled', false); 
+	}
 	if(($express).prop( 'checked')) {
 		$($jsFrameworks).attr('disabled', true); 
 		$($buildTools).attr('disabled', true); 
-    } 
+    } else {
+		$($jsFrameworks).attr('disabled', false); 
+		$($buildTools).attr('disabled', false); 
+	}
 	if(($buildTools).prop( 'checked')) {
 		$($jsFrameworks).attr('disabled', true); 
 		$($express).attr('disabled', true); 
-    } 
+    } else {
+		$($jsFrameworks).attr('disabled', false); 
+		$($express).attr('disabled', false);  
+	}
 	if(($node).prop( 'checked')) {
 		$($jsLibs).attr('disabled', true); 
 		$($npm).attr('disabled', true); 
-    } 
+    } else {
+		$($jsLibs).attr('disabled', false); 
+		$($npm).attr('disabled', false);  
+	}
 	if(($npm).prop( 'checked')) {
 		$($node).attr('disabled', true); 
 		$($jsLibs).attr('disabled', true); 
-    }  
+    }  else {
+		$($node).attr('disabled', false); 
+		$($jsLibs).attr('disabled', false);   
+	}
 });
 
 
