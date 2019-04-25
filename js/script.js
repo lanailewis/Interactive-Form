@@ -48,16 +48,20 @@ $("#design").change((e)=>{
 	// For example, if the user selects "Main Conference", then Total: $200 should appear
 	// If they add 1 workshop, the total should change to Total: $300
 	
-/* $(".activities").change((e)=>{
-	if $('input.js-frameworks').attr('checked'){
-		$('input.express').attr('disabled', true);
-	}
-}); */
+const $js-frameworks = $("input[name='js-frameworks']");
+const $js-frameworks = $("input[name='js-libs']");
+const $express = $("input[name='express']");
+const $node = $("input[name='node']");
+const $build-tools = $("input[name='build-tools']");
+const $npm = $("input[name='npm']");
 
-$('input.js-frameworks').change((e)=>{
-    $("input.express").toggle(e.target.checked);
-});
-	
+if $( $js-frameworks ).prop( "checked" ){
+	$('express').attr('disabled', true);
+}
+
+
+
+
 
 
 
