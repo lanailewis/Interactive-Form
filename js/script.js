@@ -48,13 +48,13 @@ $("#design").change((e)=>{
 	// For example, if the user selects "Main Conference", then Total: $200 should appear
 	// If they add 1 workshop, the total should change to Total: $300
 	
-/* $(".activities").click((e)=>{
+/* $(".activities").change((e)=>{
 	if $('input.js-frameworks').attr('checked'){
 		$('input.express').attr('disabled', true);
 	}
 }); */
 
-$('input.js-frameworks').click((e)=>{
+$('input.js-frameworks').change((e)=>{
     $("input.express").toggle(e.target.checked);
 });
 	
