@@ -48,16 +48,45 @@ $("#design").change((e)=>{
 	// For example, if the user selects "Main Conference", then Total: $200 should appear
 	// If they add 1 workshop, the total should change to Total: $300
 	
-const $jsFrameworks = $("input[name='js-frameworks']");
-const $jsLibs = $("input[name='js-libs']");
-const $express = $("input[name='express']");
-const $node = $("input[name='node']");
-const $buildTools = $("input[name='build-tools']");
-const $npm = $("input[name='npm']");
+const $activities = $('.activities');
+const $jsFrameworks = $(".activities input[name='js-frameworks']");
+const $jsLibs = $(".activities input[name='js-libs']");
+const $express = $(".activities input[name='express']");
+const $node = $(".activities input[name='node']");
+const $buildTools = $(".activities input[name='build-tools']");
+const $npm = $(".activities input[name='npm']");
 
-if ($( $jsFrameworks ).prop( 'checked' )){
-	$('express').attr('disabled', true);
+/* if ($( $jsFrameworks ).prop( 'checked' )){
+	$($express).attr('disabled', true);
 }
+ */
+ 
+$('.activities').change ((e)=>{
+    if(($jsFrameworks).prop( 'checked')) {
+		$($express).attr('disabled', true); 
+		$($buildTools).attr('disabled', true); 
+    }
+	if(($jsLibs).prop( 'checked')) {
+		$($node).attr('disabled', true); 
+		$($npm).attr('disabled', true); 
+    } 
+	if(($express).prop( 'checked')) {
+		$($jsFrameworks).attr('disabled', true); 
+		$($buildTools).attr('disabled', true); 
+    } 
+	if(($buildTools).prop( 'checked')) {
+		$($jsFrameworks).attr('disabled', true); 
+		$($express).attr('disabled', true); 
+    } 
+	if(($node).prop( 'checked')) {
+		$($jsLibs).attr('disabled', true); 
+		$($npm).attr('disabled', true); 
+    } 
+	if(($npm).prop( 'checked')) {
+		$($node).attr('disabled', true); 
+		$($jsLibs).attr('disabled', true); 
+    }  
+});
 
 
 
