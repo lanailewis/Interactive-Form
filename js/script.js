@@ -46,9 +46,12 @@ $("#design").change((e)=>{
 // As a user selects activities, a running total should display below the list of checkboxes
 
 	// For example, if the user selects "Main Conference", then Total: $200 should appear
+	
 	// If they add 1 workshop, the total should change to Total: $300
 	
-const $activities = $('.activities');
+
+	
+
 const $jsFrameworks = $(".activities input[name='js-frameworks']");
 const $jsLibs = $(".activities input[name='js-libs']");
 const $express = $(".activities input[name='express']");
@@ -56,55 +59,27 @@ const $node = $(".activities input[name='node']");
 const $buildTools = $(".activities input[name='build-tools']");
 const $npm = $(".activities input[name='npm']");
 
-/* if ($( $jsFrameworks ).prop( 'checked' )){
-	$($express).attr('disabled', true);
-}
- */
- 
-$('.activities').change ((e)=>{
-    if(($jsFrameworks).prop( 'checked')) {
-		$($express).attr('disabled', true); 
-		$($buildTools).attr('disabled', true); 
-    } else {
-		$($express).attr('disabled', false); 
-		$($buildTools).attr('disabled', false); 
-	}
-	if(($jsLibs).prop( 'checked')) {
-		$($node).attr('disabled', true); 
-		$($npm).attr('disabled', true); 
-    } else {
-		$($node).attr('disabled', false); 
-		$($npm).attr('disabled', false); 
-	}
-	if(($express).prop( 'checked')) {
-		$($jsFrameworks).attr('disabled', true); 
-		$($buildTools).attr('disabled', true); 
-    } else {
-		$($jsFrameworks).attr('disabled', false); 
-		$($buildTools).attr('disabled', false); 
-	}
-	if(($buildTools).prop( 'checked')) {
-		$($jsFrameworks).attr('disabled', true); 
-		$($express).attr('disabled', true); 
-    } else {
-		$($jsFrameworks).attr('disabled', false); 
-		$($express).attr('disabled', false);  
-	}
-	if(($node).prop( 'checked')) {
-		$($jsLibs).attr('disabled', true); 
-		$($npm).attr('disabled', true); 
-    } else {
-		$($jsLibs).attr('disabled', false); 
-		$($npm).attr('disabled', false);  
-	}
-	if(($npm).prop( 'checked')) {
-		$($node).attr('disabled', true); 
-		$($jsLibs).attr('disabled', true); 
-    }  else {
-		$($node).attr('disabled', false); 
-		$($jsLibs).attr('disabled', false);   
-	}
+
+// create and append element to store the total activity cost - helpful to give it an id for easy targeting and updating of its innerHTML later.
+
+// create variable to store total cost - initially set to 0 - don't use const since you want to update this periodically.
+
+const $activities = $('.activities');
+let total = document.createElement('div');
+$activities.append(total);
+$('total').attr('id', 'total-cost');
+
+// change event listener for activity section - event delegation is helpful here
+
+// variable to store dollar amount of checkbox that was just checked or unchecked - use DOM traversal to target the label parent of the checkbox, and something like regex or indexOf to grab the numbers between the $ and the end of the string.
+
+
+$(".activities").change((e)=>{
+	let activitySelection = $('.activities label e.target');
+	let activityCost = /  /
+	console.log(activityCost);
 });
+
 
 
 
