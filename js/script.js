@@ -75,11 +75,28 @@ $('total').attr('id', 'total-cost');
 
 
 $(".activities").change((e)=>{
-	let activitySelection = $('.activities label e.target');
-	let activityCost = /  /
-	console.log(activityCost);
+	const clicked = e.target;
+	const textOfClicked = clicked.parentElement.textContent;
+	const indexOfDollar = textOfClicked.indexOf('$');
+	const cost = textOfClicked.slice(indexOfDollar+1);
+	const indexOfDay = textOfClicked.indexOf("—", ",");
+	const dayAndTime = textOfClicked.slice(indexOfDay
+	
 });
 
+// variable to store the day and time of checkbox that was just checked or unchecked - similar to above, use DOM traversal and regex or indexOf to target the substring between the em dash and the comma.
+  // conditional to see if box was checked or unchecked
+  // if box was checked 
+    // add cost to total
+    // loop over all checkboxes
+     // conditional to see if checkboxes[i] matches day and time of checkbox that was checked and if so, disable checkboxes[i]
+  
+  // if box was unchecked
+    // subtract cost from total
+    // loop over all checkboxes
+     // conditional to see if checkboxes[i] matches day and time of checkbox that was checked and if so, enable checkboxes[i]
+
+  // lastly, inside the event listener, update the innerHTML of the cost element you appended to equal the adjusted cost total  
 
 
 
