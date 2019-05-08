@@ -48,9 +48,6 @@ $("#design").change((e)=>{
 	// For example, if the user selects "Main Conference", then Total: $200 should appear
 	
 	// If they add 1 workshop, the total should change to Total: $300
-	
-
-	
 
 const $jsFrameworks = $(".activities input[name='js-frameworks']");
 const $jsLibs = $(".activities input[name='js-libs']");
@@ -65,24 +62,24 @@ const $npm = $(".activities input[name='npm']");
 // create variable to store total cost - initially set to 0 - don't use const since you want to update this periodically.
 
 const $activities = $('.activities');
-let total = document.createElement('div');
-$activities.append(total);
-$('total').attr('id', 'total-cost');
+const div = document.createElement('div');
+$activities.append(div);
+let totalCost = 0;
 
-// change event listener for activity section - event delegation is helpful here
-
-// variable to store dollar amount of checkbox that was just checked or unchecked - use DOM traversal to target the label parent of the checkbox, and something like regex or indexOf to grab the numbers between the $ and the end of the string.
-
-
-$(".activities").change((e)=>{
+$($activities).change((e)=>{
 	const clicked = e.target;
 	const textOfClicked = clicked.parentElement.textContent;
 	const indexOfDollar = textOfClicked.indexOf('$');
 	const cost = textOfClicked.slice(indexOfDollar+1);
-	const indexOfDay = textOfClicked.indexOf("—", ",");
-	const dayAndTime = textOfClicked.slice(indexOfDay
+	const number = parseInt(cost);
 	
 });
+
+
+
+// change event listener for activity section - event delegation is helpful here
+
+// variable to store dollar amount of checkbox that was just checked or unchecked - use DOM traversal to target the label parent of the checkbox, and something like regex or indexOf to grab the numbers between the $ and the end of the string.
 
 // variable to store the day and time of checkbox that was just checked or unchecked - similar to above, use DOM traversal and regex or indexOf to target the substring between the em dash and the comma.
   // conditional to see if box was checked or unchecked
