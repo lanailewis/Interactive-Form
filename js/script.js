@@ -54,7 +54,20 @@ $($activities).change((e)=>{
 	const indexOfDollar = textOfClicked.indexOf('$');
 	const cost = textOfClicked.slice(indexOfDollar+1);
 	const number = parseInt(cost);
-	
+	if (clicked.checked){
+		totalCost = totalCost + cost;
+	} else {
+		totalCost = totalCost - cost;
+	}
+	totalCost.textContent = 'Total: $' + totalCost;
+	const indexOfDash = textOfClicked.indexOf('—');
+	const indexOfComma = textOfClicked.indexOf(',');
+	const dayAndTime = textOfClicked.slice(indexOfDash, indexOfComma);
+	const activityElements = $('.activities input');
+	for ( i = 0; i < activityElements.length; i++) {
+		const activity = activityElements.textContent[i];
+		console.log(activity);
+	}
 });
 
 
