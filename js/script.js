@@ -65,8 +65,10 @@ $($activities).change((e)=>{
 	const dayAndTime = textOfClicked.slice(indexOfDash, indexOfComma);
 	const activityElements = $('.activities input');
 	for ( i = 0; i < activityElements.length; i++) {
-		const activity = activityElements.textContent[i];
-		console.log(activity);
+		const activity = $(activityElements[i]).parent().text();
+		if ( activity.includes(dayAndTime) && !== textOfClicked){
+			
+		}
 	}
 });
 
