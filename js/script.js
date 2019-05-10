@@ -68,9 +68,9 @@ $($activities).change((e)=>{
 		const activity = $(activityElements[i]).parent().text();
 		if ( dayAndTime && activityElements !== clicked ){
 			if ( $(activityElements[i]).prop('checked') === true ) {
-				$(activityElements).prop('disabled', true);
+				$(activityElements[i]).prop('disabled', true);
 			} else {
-				$(activityElements).prop('enabled', true);
+				$(activityElements[i]).prop('enabled', true);
 			}
 		}
 	}
