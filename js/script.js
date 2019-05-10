@@ -55,36 +55,29 @@ $($activities).change((e)=>{
 	const cost = textOfClicked.slice(indexOfDollar+1);
 	const number = parseInt(cost);
 	if (clicked.checked){
-		totalCost = totalCost + cost;
+		totalCost + number;
 	} else {
 		totalCost = totalCost - cost;
 	}
-	totalCost.textContent = 'Total: $' + totalCost;
+	
+	div.textContent = 'Total: $' + totalCost;
+	
 	const indexOfDash = textOfClicked.indexOf('—');
 	const indexOfComma = textOfClicked.indexOf(',');
 	const dayAndTime = textOfClicked.slice(indexOfDash, indexOfComma);
 	const activityElements = $('.activities input');
+	
 	for ( i = 0; i < activityElements.length; i++) {
 		const activity = $(activityElements[i]).parent().text();
-		if ( dayAndTime && activityElements !== clicked ){
-			if ( $(activityElements[i]).prop('checked') === true ) {
-				$(activityElements[i]).prop('disabled', true);
+		if ( activity.includes(dayAndTime) && activity !== textOfClicked ){
+			if ( $(clicked).prop('checked') === true ) {
+				activityElements[i].disabled = true;
 			} else {
-				$(activityElements[i]).prop('enabled', true);
+				activityElements[i].disabled = false;
 			}
 		}
 	}
 });
-
-//$('form input[type="submit"]').prop("disabled", true);
-
-//if($(this).prop("checked") == true){
-
-//You want a condition like `(variable && otherVar !== oldVar)` this that //variable and otherVar are both not equal to the oldVar
-
-//day and time variable above && if the current label text variable does not
-//equal the variable you created earlier with the label text of the element //that was just
-//clicked
 
 
 
