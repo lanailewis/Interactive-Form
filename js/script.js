@@ -66,11 +66,25 @@ $($activities).change((e)=>{
 	const activityElements = $('.activities input');
 	for ( i = 0; i < activityElements.length; i++) {
 		const activity = $(activityElements[i]).parent().text();
-		if ( activity.includes(dayAndTime) && !== textOfClicked){
-			
+		if ( dayAndTime && activityElements !== clicked ){
+			if ( $(activityElements[i]).prop('checked') === true ) {
+				$(activityElements).prop('disabled', true);
+			} else {
+				$(activityElements).prop('enabled', true);
+			}
 		}
 	}
 });
+
+//$('form input[type="submit"]').prop("disabled", true);
+
+//if($(this).prop("checked") == true){
+
+//You want a condition like `(variable && otherVar !== oldVar)` this that //variable and otherVar are both not equal to the oldVar
+
+//day and time variable above && if the current label text variable does not
+//equal the variable you created earlier with the label text of the element //that was just
+//clicked
 
 
 
