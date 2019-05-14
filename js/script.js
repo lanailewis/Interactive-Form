@@ -69,6 +69,7 @@ $($activities).change((e)=>{
 	
 	for ( i = 0; i < activityElements.length; i++) {
 		const activity = $(activityElements[i]).parent().text();
+		console.log(activity);
 		if ( activity.includes(dayAndTime) && activity !== textOfClicked ){
 			if ( $(clicked).prop('checked') === false ) {
 				activityElements[i].disabled = false;
