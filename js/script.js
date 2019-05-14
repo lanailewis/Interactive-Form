@@ -55,7 +55,7 @@ $($activities).change((e)=>{
 	const cost = textOfClicked.slice(indexOfDollar+1);
 	const number = parseInt(cost);
 	if (clicked.checked){
-		totalCost + number;
+		totalCost += number;
 	} else {
 		totalCost = totalCost - cost;
 	}
@@ -70,10 +70,10 @@ $($activities).change((e)=>{
 	for ( i = 0; i < activityElements.length; i++) {
 		const activity = $(activityElements[i]).parent().text();
 		if ( activity.includes(dayAndTime) && activity !== textOfClicked ){
-			if ( $(clicked).prop('checked') === true ) {
-				activityElements[i].disabled = true;
-			} else {
+			if ( $(clicked).prop('checked') === false ) {
 				activityElements[i].disabled = false;
+			} else {
+				activityElements[i].disabled = true;
 			}
 		}
 	}
