@@ -4,18 +4,9 @@ $("#name").focus();
 
 // Include a text field that will be revealed when the "Other" option is selected from the "Job Role" drop down menu
 
-// Give the field an id of “other-title,” and add the placeholder text of "Your Job Role"
-
 $('#other-title').hide();
 
 // For the T-Shirt "Color" menu, only display the color options that match the design selected in the "Design" menu
-
-//if js puns is selected
-//hide tomato, steel blue, dim grey
-
-//if heart js is selected
-//hide cornflower blue, dark slate grey, gold
-
 
 $("#design").change((e)=>{
 	
@@ -35,13 +26,7 @@ $("#design").change((e)=>{
 		
 });
 
-const $jsFrameworks = $(".activities input[name='js-frameworks']");
-const $jsLibs = $(".activities input[name='js-libs']");
-const $express = $(".activities input[name='express']");
-const $node = $(".activities input[name='node']");
-const $buildTools = $(".activities input[name='build-tools']");
-const $npm = $(".activities input[name='npm']");
-
+// Grab the text (day and time) of each activity, plus its cost, and disable conflicting activities when one is clicked
 
 const $activities = $('.activities');
 const div = document.createElement('div');
@@ -79,20 +64,13 @@ $($activities).change((e)=>{
 	}
 });
 
+// Payment section - hide the 'select payment method' option, show the appropriate input depending on the payment type selected
 
+const selectMethod = $('#payment option[value="select_method"]');
 
+$(selectMethod).hide();
 
-
-
-
-
-
-
-
-
-
-
-	
+const paymentMethodSelected = $('#payment option').text()
 
 
 
