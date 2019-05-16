@@ -71,6 +71,7 @@ const selectMethod = $('#payment option[value="select_method"]');
 $(selectMethod).hide();
 
 const paymentMethodSelected = $('#payment option').text()
+console.log(paymentMethodSelected);
 
 
 
