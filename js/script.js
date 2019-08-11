@@ -64,14 +64,23 @@ $($activities).change((e)=>{
 	}
 });
 
-// Payment section - hide the 'select payment method' option, show the appropriate input depending on the payment type selected
+// Payment section - hide 'select payment method'
 
 const selectMethod = $('#payment option[value="select_method"]');
+const creditCardMethod = $('#payment option[value="credit card"]');
 
 $(selectMethod).hide();
 
-const paymentMethodSelected = $('#payment option').text()
-console.log(paymentMethodSelected);
+// Set the 'credit card' option to show appropriate fields, hide when either two other options are selected
+
+if ( $('#payment option[value="credit-card"]') ) {
+	$('#credit-card').show();
+	} else {
+		$('#credit-card').hide();
+}
+
+
+
 
 
 
