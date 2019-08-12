@@ -85,7 +85,7 @@ $(paymentMethod).change((e)=>{
 		$(creditCardDiv).show();
 		$(bitcoinMethod).hide();
 		$(paypalMethod).hide();
-	} if ( $(e.target).val() == "Bitcoin" ) {
+	} else if ( $(e.target).val() == "Bitcoin" ) {
 		$(bitcoinMethod).show();
 		$(creditCardDiv).hide();
 		$(paypalMethod).hide();
@@ -94,7 +94,8 @@ $(paymentMethod).change((e)=>{
 		$(creditCardDiv).hide();
 		$(bitcoinMethod).hide();
 	}
-} );
+});
+
 
 
 
