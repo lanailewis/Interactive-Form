@@ -68,22 +68,32 @@ $($activities).change((e)=>{
 
 const selectMethod = $('#payment option[value="select_method"]');
 const creditCardDiv = $('#credit-card');
+const paymentMethod = $('#payment');
+const bitcoinMethod = $('#Bitcoin');
+const paypalMethod = $('#Paypal');
 
 $(selectMethod).hide();
 $(creditCardDiv).hide();
+$(bitcoinMethod).hide();
+$(paypalMethod).hide();
 
 // Set the 'credit card' option to show appropriate fields, hide when either two other options are selected
 
-if ( $('#payment option[value="credit-card"]') ) {
-	$(creditCardDiv).show();
-}
-
-
-
-
-
-
-	
+$(paymentMethod).change((e)=>{
+	if ( $('#payment option[value="credit-card"]') ) {
+		$(creditCardDiv).show();
+		$(bitcoinMethod).hide();
+		$(paypalMethod).hide();
+	} if ( ('#payment option[value="Bitcoin"]') ) {
+		$(bitcoinMethod).show();
+		$(creditCardDiv).hide();
+		$(paypalMethod).hide();
+	} else {
+		$(paypalMethod).show();
+		$(creditCardDiv).hide();
+		$(bitcoinMethod).hide();
+	}
+} );
 
 
 
