@@ -80,11 +80,12 @@ $(paypalMethod).hide();
 // Set the 'credit card' option to show appropriate fields, hide when either two other options are selected
 
 $(paymentMethod).change((e)=>{
-	if ( $('#payment option[value="credit-card"]') ) {
+	console.log(paymentMethod[0].value);
+	if ( $(e.target).val() == "credit-card" ) {
 		$(creditCardDiv).show();
 		$(bitcoinMethod).hide();
 		$(paypalMethod).hide();
-	} if ( ('#payment option[value="Bitcoin"]') ) {
+	} if ( $(e.target).val() == "Bitcoin" ) {
 		$(bitcoinMethod).show();
 		$(creditCardDiv).hide();
 		$(paypalMethod).hide();
