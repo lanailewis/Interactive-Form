@@ -81,11 +81,11 @@ $(paypalMethod).hide();
 
 $(paymentMethod).change((e)=>{
 	console.log(paymentMethod[0].value);
-	if ( $(e.target).val() == "credit-card" ) {
+	if ( $(e.target).val() === "credit card" ) {
 		$(creditCardDiv).show();
 		$(bitcoinMethod).hide();
 		$(paypalMethod).hide();
-	} else if ( $(e.target).val() == "Bitcoin" ) {
+	} else if ( $(e.target).val() === "bitcoin" ) {
 		$(bitcoinMethod).show();
 		$(creditCardDiv).hide();
 		$(paypalMethod).hide();
@@ -95,6 +95,27 @@ $(paymentMethod).change((e)=>{
 		$(bitcoinMethod).hide();
 	}
 });
+
+//Form Validation - create a function for each form field to check for correct inputs
+
+	//Name Field - check that the input is more than 0 characters in length
+
+function nameFieldCheck() {
+	const nameField = $( '#name' );
+	if (nameField.val().length > 0 ) {
+		nameField.css( 'borderColor','#c1deeb' );
+		return true;
+	} else {
+		nameField.css( 'borderColor','red' );
+		return false;
+	}
+}
+
+nameFieldCheck()
+
+
+
+
 
 
 
