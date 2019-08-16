@@ -98,20 +98,29 @@ $(paymentMethod).change((e)=>{
 
 //Form Validation - create a function for each form field to check for correct inputs
 
-	//Name Field - check that the input is more than 0 characters in length
+//Name Field - check that the input is more than 0 characters in length
 
-function nameFieldCheck() {
-	const nameField = $( '#name' );
-	if (nameField.val().length > 0 ) {
-		nameField.css( 'borderColor','#c1deeb' );
-		return true;
-	} else if ( nameField.val().length === 0 ){
-		nameField.css( 'borderColor','red' );
-		return false;
+const registerButton = $('#submitButton');
+console.log(registerButton);
+
+$(registerButton).submit((e)=>{
+	function nameFieldCheck() {
+		const nameField = $( '#name' );
+		if (nameField.val().length > 0 ) {
+			nameField.css( 'borderColor','#c1deeb' );
+			return true;
+		} else if ( nameField.val().length === 0 ){
+			nameField.css( 'borderColor','red' );
+			return false;
+		}
 	}
-}
+});
 
-nameFieldCheck().onchange
+
+
+
+	
+
 
 
 
