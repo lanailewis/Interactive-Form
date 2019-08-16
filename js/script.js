@@ -114,6 +114,7 @@ $(registerButton).submit((e)=>{
 			return false;
 		}
 	}
+	event.preventDefault();
 });
 
 
