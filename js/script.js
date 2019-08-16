@@ -105,13 +105,14 @@ function nameFieldCheck() {
 	if (nameField.val().length > 0 ) {
 		nameField.css( 'borderColor','#c1deeb' );
 		return true;
-	} else {
+	} else if ( nameField.val().length === 0 ){
 		nameField.css( 'borderColor','red' );
 		return false;
 	}
 }
 
-nameFieldCheck()
+nameFieldCheck().onchange
+
 
 
 
