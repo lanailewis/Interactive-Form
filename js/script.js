@@ -100,13 +100,11 @@ $(paymentMethod).change((e)=>{
 
 //Name Field - check that the input is more than 0 characters in length
 
-const registerButton = $('#submitButton');
-console.log(registerButton);
-
-$(registerButton).submit((e)=>{
+$('form').submit((e)=>{
+	e.preventDefault();
 	function nameFieldCheck() {
 		const nameField = $( '#name' );
-		if (nameField.val().length > 0 ) {
+		if ( nameField.val().length > 0 ) {
 			nameField.css( 'borderColor','#c1deeb' );
 			return true;
 		} else if ( nameField.val().length === 0 ){
@@ -114,8 +112,29 @@ $(registerButton).submit((e)=>{
 			return false;
 		}
 	}
-	event.preventDefault();
+	nameFieldCheck()
 });
+
+$('form').submit((e)=>{
+	e.preventDefault();
+	function emailFieldCheck(email) {
+		const emailField = $( '#mail' );
+		const mailFormat = /^\^@]+@[^@.]+\.[a-z]+$/i;
+		if ( emailField.value === mailFormat ) {
+			emailField.css( 'borderColor','#c1deeb' );
+			return true;
+		} else if ( emailField.value ==! mailFormat ){
+			emailField.css( 'borderColor','red' );
+			return false;
+		}
+	}
+	emailFieldCheck()
+});
+
+// /^\^@]+@[^@.]+\.[a-z]+$/i.test(emailField.value)
+
+
+
 
 
 
