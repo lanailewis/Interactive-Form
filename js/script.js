@@ -128,7 +128,7 @@ $('form').submit((e)=>{
 		} else {
 			emailField.css( 'borderColor','red' );
 			return false;
-			$("input:text").val("Please enter a valid email address");
+			$('emailField input').val('Please enter a valid email address');
 		}
 	}
 	emailFieldCheck()
