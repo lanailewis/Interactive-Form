@@ -98,7 +98,7 @@ $(paymentMethod).change((e)=>{
 
 //Form Validation - create a function for each form field to check for correct inputs
 
-//Name Field - check that the input is more than 0 characters in length
+//Name Field Validation
 
 $('form').submit((e)=>{
 	e.preventDefault();
@@ -115,23 +115,50 @@ $('form').submit((e)=>{
 	nameFieldCheck()
 });
 
+//Email Field Validation
+
 $('form').submit((e)=>{
 	e.preventDefault();
-	function emailFieldCheck(email) {
+	function emailFieldCheck() {
 		const emailField = $( '#mail' );
 		const mailFormat = /^\^@]+@[^@.]+\.[a-z]+$/i;
-		if ( emailField.value === mailFormat ) {
+		if ( mailFormat.test($('emailField').val()) ) {
 			emailField.css( 'borderColor','#c1deeb' );
 			return true;
-		} else if ( emailField.value ==! mailFormat ){
+		} else {
 			emailField.css( 'borderColor','red' );
 			return false;
+			$("input:text").val("Please enter a valid email address");
 		}
 	}
 	emailFieldCheck()
 });
 
-// /^\^@]+@[^@.]+\.[a-z]+$/i.test(emailField.value)
+//Activity Section Validation
+
+function validateActivity() {
+	const activities = $('activities');
+	activities.css( 'border','none' );
+	if ($('input[type="checkbox"]').is(':checked')) {
+		$('.activities legend span').remove();
+		$('.activities legend').css('color', '#000');
+		return true;
+	} else {
+		$('.activities legend span').remove();
+		$('.activities legend').append('<span> Please select at least one activity.</span>').css('color', 'red');
+		return false;
+	}
+}
+
+$('.activities').on('click', function() {
+        validateActivity();
+    });
+	
+//Payment Section Validation
+
+function validatePayment() {
+	
+}
 
 
 
