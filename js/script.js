@@ -183,10 +183,13 @@ $('form').submit((e)=>{
 	
 	//Payment Section Validation
 	
-	//Credit Card Number Check
+	
 
 	$(paymentMethod).change((e)=>{
 		if ( $(e.target).val() === "credit card" ) {
+			
+			//Credit Card Number Check Function
+			
 			function paymentCheck() {
 					const ccNumberField = $( '#cc-num' );
 					const ccNumberFormat = /[0-9]{16,}/;
@@ -208,7 +211,7 @@ $('form').submit((e)=>{
 				paymentCheck()
 			}
 			
-			//Zip Code Check
+			//Zip Code Check Function
 	
 			function zipCodeCheck() {
 					const zipCodeField = $( '#zip' );
@@ -231,7 +234,7 @@ $('form').submit((e)=>{
 				zipCodeCheck()
 			}
 			
-			//CVV Check
+			//CVV Check Function
 	
 			function zipCodeCheck() {
 					const cvvField = $( '#cvv' );
