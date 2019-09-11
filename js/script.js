@@ -1,4 +1,6 @@
-// When the page first loads, the first text field should be in focus by default
+/***************
+Opening Section
+***************/
 
 $("#name").focus();
 
@@ -6,7 +8,9 @@ $("#name").focus();
 
 $('#other-title').hide();
 
-// For the T-Shirt "Color" menu, only display the color options that match the design selected in the "Design" menu
+/***************
+T-Shirt Section
+***************/
 
 $("#design").change((e)=>{
 	
@@ -26,7 +30,9 @@ $("#design").change((e)=>{
 		
 });
 
-// Grab the text (day and time) of each activity, plus its cost, and disable conflicting activities when one is clicked
+/*****************
+Activity Section
+*****************/
 
 const $activities = $('.activities');
 const div = document.createElement('div');
@@ -64,7 +70,9 @@ $($activities).change((e)=>{
 	}
 });
 
-// Payment section - hide 'select payment method', and credit card payment input fields
+/******************* 
+Payment Section
+*******************/
 
 const selectMethod = $('#payment option[value="select_method"]');
 const creditCardDiv = $('#credit-card');
@@ -80,7 +88,6 @@ $(paypalMethod).hide();
 // Set the 'credit card' option to show appropriate fields, hide when either two other options are selected
 
 $(paymentMethod).change((e)=>{
-	console.log(paymentMethod[0].value);
 	if ( $(e.target).val() === "credit card" ) {
 		$(creditCardDiv).show();
 		$(bitcoinMethod).hide();
@@ -96,12 +103,18 @@ $(paymentMethod).change((e)=>{
 	}
 });
 
-//Form Validation - create a function for each form field to check for correct inputs
+/***************
+Form Validation
+***************/
 
-//Name Field Validation
+//Form Validation Function containing all field validations
 
 $('form').submit((e)=>{
+
 	e.preventDefault();
+	
+	//Name Field Validation
+
 	function nameFieldCheck() {
 		const nameField = $( '#name' );
 		if ( nameField.val().length > 0 ) {
@@ -113,55 +126,63 @@ $('form').submit((e)=>{
 		}
 	}
 	nameFieldCheck()
-});
-
-//Email Field Validation
-
-$('form').submit((e)=>{
-	e.preventDefault();
+	
+	//Email Field Validation
+	
 	function emailFieldCheck() {
 		const emailField = $( '#mail' );
 		const mailFormat = /^\^@]+@[^@.]+\.[a-z]+$/i;
+		const errorMessage = "<span>Please enter a valid email address.</span>";
 		if ( mailFormat.test($('emailField').val()) ) {
-			emailField.css( 'borderColor','#c1deeb' );
+			emailField.css( 'border-color','#c1deeb' );
 			return true;
 		} else {
-			emailField.css( 'borderColor','red' );
+			emailField.after(errorMessage);
+			emailField.css( 'border-color','red' );
 			return false;
-			//$('emailField input').val('Please enter a valid email address');
-			//emailField.value = 'Please enter a valid email address';
-			$(emailField).val('Please enter a valid email address')
 		}
 	}
 	emailFieldCheck()
+	
+	//Activity Section Validation
+
+	function validateActivity() {
+		const activities = $('.activities');
+		activities.css( 'border','none' );
+		if ($('input[type="checkbox"]').is(':checked')) {
+			$('.activities legend span').remove();
+			$('.activities legend').css('color', '#000');
+			return true;
+		} else {
+			$('.activities legend span').remove();
+			$('.activities legend').append('<span>. Please select at least one activity.</span>').css('color', 'red');
+			return false;
+		}
+	}
+
+	$('.activities').on('click', function() {
+			validateActivity();
+		});
+	
+	
+	//Payment Section Validation
+
+	function paymentCheck() {
+			const ccNumberField = $( '#cc-num' );
+			const ccNumberFormat = /[0-9]{16,}/;
+			if ( ccNumberFormat.test($('ccNumberField').val()) ) {
+				ccNumberField.css( 'border-color','#c1deeb' );
+				return true;
+			} else {
+				ccNumberField.css( 'border-color','red' );
+				ccNumberField.append('<span>Please enter a valid email address.</span>').css('color', 'red');
+				return false;
+		}
+		paymentCheck()
+	};
 });
 
-//Activity Section Validation
-
-function validateActivity() {
-	const activities = $('activities');
-	activities.css( 'border','none' );
-	if ($('input[type="checkbox"]').is(':checked')) {
-		$('.activities legend span').remove();
-		$('.activities legend').css('color', '#000');
-		return true;
-	} else {
-		$('.activities legend span').remove();
-		$('.activities legend').append('<span> Please select at least one activity.</span>').css('color', 'red');
-		return false;
-	}
-}
-
-$('.activities').on('click', function() {
-        validateActivity();
-    });
 	
-//Payment Section Validation
-
-function validatePayment() {
-	
-}
-
 
 
 
