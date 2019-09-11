@@ -132,7 +132,8 @@ $('form').submit((e)=>{
 	function emailFieldCheck() {
 		const emailField = $( '#mail' );
 		const mailFormat = /^\^@]+@[^@.]+\.[a-z]+$/i;
-		const errorMessage = "<span>Please enter a valid email address.</span>";
+		const errorMessage = $('<span></span>');
+		errorMessage.text('Please enter a valid email address');
 		if ( mailFormat.test($('emailField').val()) ) {
 			emailField.css( 'border-color','#c1deeb' );
 			return true;
