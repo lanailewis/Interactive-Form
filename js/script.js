@@ -134,12 +134,12 @@ $('form').submit((e)=>{
 		const mailFormat = /^\^@]+@[^@.]+\.[a-z]+$/i;
 		const errorMessage = $('<span></span>');
 		errorMessage.text('Please enter a valid email address');
+		errorMessage.css({ 'color': 'red', 'paddingBottom': '10px' });
 		if ( mailFormat.test($('emailField').val()) ) {
 			emailField.css( 'border-color','#c1deeb' );
 			return true;
 		} else {
-			emailField.after( errorMessage.css( 'color', 'red' ) );
-			errorMessage.css( 'padding','10px' );
+			emailField.after( errorMessage );
 			emailField.css( 'border-color','red' );
 			return false;
 		}
