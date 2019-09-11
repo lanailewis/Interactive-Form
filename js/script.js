@@ -117,10 +117,18 @@ $('form').submit((e)=>{
 
 	function nameFieldCheck() {
 		const nameField = $( '#name' );
+		const errorMessage = $('<p></p>');
+		errorMessage.text('Please enter your name');
+		errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+		errorMessage.animate({
+			paddingTop: '5px',
+			paddingBottom: '10px'
+		  });
 		if ( nameField.val().length > 0 ) {
 			nameField.css( 'borderColor','#c1deeb' );
 			return true;
 		} else if ( nameField.val().length === 0 ){
+			nameField.after( errorMessage );
 			nameField.css( 'borderColor','red' );
 			return false;
 		}
@@ -132,9 +140,13 @@ $('form').submit((e)=>{
 	function emailFieldCheck() {
 		const emailField = $( '#mail' );
 		const mailFormat = /^\^@]+@[^@.]+\.[a-z]+$/i;
-		const errorMessage = $('<span></span>');
+		const errorMessage = $('<p></p>');
 		errorMessage.text('Please enter a valid email address');
-		errorMessage.css({ 'color': 'red', 'paddingBottom': '10px' });
+		errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+		errorMessage.animate({
+			paddingTop: '5px',
+			paddingBottom: '10px'
+		  });
 		if ( mailFormat.test($('emailField').val()) ) {
 			emailField.css( 'border-color','#c1deeb' );
 			return true;
@@ -157,14 +169,16 @@ $('form').submit((e)=>{
 			return true;
 		} else {
 			$('.activities legend span').remove();
-			$('.activities legend').append('<span>. Please select at least one activity.</span>').css('color', 'red');
+			$('.activities legend').append('<span>. Please select at least one activity.</span>').css({'color': 'red', 'fontStyle': 'italic'});
 			return false;
 		}
 	}
+	
+	validateActivity()
 
-	$('.activities').on('click', function() {
-			validateActivity();
-		});
+	//$('.activities').on('click', function() {
+	//		validateActivity();
+	//	});
 	
 	
 	//Payment Section Validation
@@ -172,12 +186,19 @@ $('form').submit((e)=>{
 	function paymentCheck() {
 			const ccNumberField = $( '#cc-num' );
 			const ccNumberFormat = /[0-9]{16,}/;
+			const errorMessage = $('<p></p>');
+			errorMessage.text('Please enter a valid 16-digit credit card number');
+			errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+			errorMessage.animate({
+				paddingTop: '5px',
+				paddingBottom: '10px'
+			  });
 			if ( ccNumberFormat.test($('ccNumberField').val()) ) {
 				ccNumberField.css( 'border-color','#c1deeb' );
 				return true;
 			} else {
 				ccNumberField.css( 'border-color','red' );
-				ccNumberField.append('<span>Please enter a valid email address.</span>').css('color', 'red');
+				ccNumberField.after(errorMessage);
 				return false;
 		}
 		paymentCheck()
