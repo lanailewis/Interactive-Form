@@ -137,7 +137,7 @@ $('form').submit((e)=>{
 			emailField.css( 'border-color','#c1deeb' );
 			return true;
 		} else {
-			emailField.after(errorMessage);
+			emailField.after(errorMessage.css( 'color', 'red' ));
 			emailField.css( 'border-color','red' );
 			return false;
 		}
