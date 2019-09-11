@@ -182,27 +182,81 @@ $('form').submit((e)=>{
 	
 	
 	//Payment Section Validation
+	
+	//Credit Card Number Check
 
-	function paymentCheck() {
-			const ccNumberField = $( '#cc-num' );
-			const ccNumberFormat = /[0-9]{16,}/;
-			const errorMessage = $('<p></p>');
-			errorMessage.text('Please enter a valid 16-digit credit card number');
-			errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
-			errorMessage.animate({
-				paddingTop: '5px',
-				paddingBottom: '10px'
-			  });
-			if ( ccNumberFormat.test($('ccNumberField').val()) ) {
-				ccNumberField.css( 'border-color','#c1deeb' );
-				return true;
-			} else {
-				ccNumberField.css( 'border-color','red' );
-				ccNumberField.after(errorMessage);
-				return false;
-		}
-		paymentCheck()
-	};
+	$(paymentMethod).change((e)=>{
+		if ( $(e.target).val() === "credit card" ) {
+			function paymentCheck() {
+					const ccNumberField = $( '#cc-num' );
+					const ccNumberFormat = /[0-9]{16,}/;
+					const errorMessage = $('<p></p>');
+					errorMessage.text('Please enter a valid 16-digit credit card number');
+					errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+					errorMessage.animate({
+						paddingTop: '5px',
+						paddingBottom: '10px'
+					  });
+					if ( ccNumberFormat.test($('ccNumberField').val()) ) {
+						ccNumberField.css( 'border-color','#c1deeb' );
+						return true;
+					} else {
+						ccNumberField.css( 'border-color','red' );
+						ccNumberField.after(errorMessage);
+						return false;
+				}
+				paymentCheck()
+			}
+			
+			//Zip Code Check
+	
+			function zipCodeCheck() {
+					const zipCodeField = $( '#zip' );
+					const zipCodeFormat = /[0-9]{4,}/;
+					const errorMessage = $('<p></p>');
+					errorMessage.text('Please enter your zip code');
+					errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+					errorMessage.animate({
+						paddingTop: '5px',
+						paddingBottom: '10px'
+					  });
+					if ( zipCodeFormat.test($('zipCodeField').val()) ) {
+						zipCodeField.css( 'border-color','#c1deeb' );
+						return true;
+					} else {
+						zipCodeField.css( 'border-color','red' );
+						zipCodeField.after(errorMessage);
+						return false;
+				}
+				zipCodeCheck()
+			}
+			
+			//CVV Check
+	
+			function zipCodeCheck() {
+					const cvvField = $( '#cvv' );
+					const cvvFormat = /[0-9]{3,}/;
+					const errorMessage = $('<p></p>');
+					errorMessage.text('Please enter the security code from the back of your card');
+					errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+					errorMessage.animate({
+						paddingTop: '5px',
+						paddingBottom: '10px'
+					  });
+					if ( cvvFormat.test($('zipCodeField').val()) ) {
+						cvvField.css( 'border-color','#c1deeb' );
+						return true;
+					} else {
+						cvvField.css( 'border-color','red' );
+						cvvField.after(errorMessage);
+						return false;
+				}
+				cvvCheck()
+			}
+		}	
+	});
+	
+	
 });
 
 	
