@@ -107,6 +107,42 @@ $(paymentMethod).change((e)=>{
 Form Validation
 ***************/
 
+	/******************************
+	Error Message Variables and CSS
+	*******************************/
+	
+	//Name Field Error Message
+	
+	const nameErrorMessage = $('<p></p>');
+	nameErrorMessage.text('Please enter your name');
+	nameErrorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+	
+	//Email Field Error Message
+	
+	const emailErrorMessage = $('<p></p>');
+	emailErrorMessage.text('Please enter a valid email address');
+	emailErrorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+	
+	//Credit Card Number Field Error Message
+	
+	const ccErrorMessage = $('<p></p>');
+	ccErrorMessage.text('Please enter a valid 16-digit credit card number');
+	ccErrorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+	
+	//Zip Code Field Error Message
+	
+	const zipErrorMessage = $('<p></p>');
+	zipErrorMessage.text('Please enter your zip code');
+	zipErrorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+	
+	//CVV Code Field Error Message
+	
+	const cvvErrorMessage = $('<p></p>');
+	cvvErrorMessage.text('Please enter the security code from the back of your card');
+	cvvErrorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
+	
+	/****************************************************************/
+
 //Form Validation Function containing all field validations
 
 $('form').submit((e)=>{
@@ -117,10 +153,7 @@ $('form').submit((e)=>{
 
 	function nameFieldCheck() {
 		const nameField = $( '#name' );
-		const errorMessage = $('<p></p>');
-		errorMessage.text('Please enter your name');
-		errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
-		errorMessage.animate({
+		nameErrorMessage.animate({
 			paddingTop: '5px',
 			paddingBottom: '10px'
 		  });
@@ -128,10 +161,11 @@ $('form').submit((e)=>{
 			nameField.css( 'borderColor','#c1deeb' );
 			return true;
 		} else if ( nameField.val().length === 0 ){
-			nameField.after( errorMessage );
+			nameField.after( nameErrorMessage );
 			nameField.css( 'borderColor','red' );
 			return false;
 		}
+		nameErrorMessage.empty();
 	}
 	nameFieldCheck()
 	
@@ -140,10 +174,7 @@ $('form').submit((e)=>{
 	function emailFieldCheck() {
 		const emailField = $( '#mail' );
 		const mailFormat = /^[^@]+@[^@.]+\.[a-z]+$/
-		const errorMessage = $('<p></p>');
-		errorMessage.text('Please enter a valid email address');
-		errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
-		errorMessage.animate({
+		emailErrorMessage.animate({
 			paddingTop: '5px',
 			paddingBottom: '10px'
 		  });
@@ -151,7 +182,7 @@ $('form').submit((e)=>{
 			emailField.css( 'border-color','#c1deeb' );
 			return true;
 		} else {
-			emailField.after( errorMessage );
+			emailField.after( emailErrorMessage );
 			emailField.css( 'border-color','red' );
 			return false;
 		}
@@ -187,10 +218,7 @@ $('form').submit((e)=>{
 		function paymentCheck() {
 				const ccNumberField = $( '#cc-num' );
 				const ccNumberFormat = /[0-9]{16,}/;
-				const errorMessage = $('<p></p>');
-				errorMessage.text('Please enter a valid 16-digit credit card number');
-				errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
-				errorMessage.animate({
+				ccErrorMessage.animate({
 					paddingTop: '5px',
 					paddingBottom: '10px'
 				});
@@ -199,7 +227,7 @@ $('form').submit((e)=>{
 					return true;
 				} else {
 					ccNumberField.css( 'border-color','red' );
-					ccNumberField.after(errorMessage);
+					ccNumberField.after( ccErrorMessage );
 					return false;
 			}
 		}
@@ -210,10 +238,7 @@ $('form').submit((e)=>{
 		function zipCodeCheck() {
 				const zipCodeField = $( '#zip' );
 				const zipCodeFormat = /[0-9]{4,}/;
-				const errorMessage = $('<p></p>');
-				errorMessage.text('Please enter your zip code');
-				errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
-				errorMessage.animate({
+				zipErrorMessage.animate({
 					paddingTop: '5px',
 					paddingBottom: '10px'
 				});
@@ -222,7 +247,7 @@ $('form').submit((e)=>{
 					return true;
 				} else {
 					zipCodeField.css( 'border-color','red' );
-					zipCodeField.after(errorMessage);
+					zipCodeField.after( zipErrorMessage );
 					return false;
 			}
 		}
@@ -233,10 +258,8 @@ $('form').submit((e)=>{
 		function cvvCheck() {
 				const cvvField = $( '#cvv' );
 				const cvvFormat = /[0-9]{3,}/;
-				const errorMessage = $('<p></p>');
-				errorMessage.text('Please enter the security code from the back of your card');
-				errorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
-				errorMessage.animate({
+				
+				cvvErrorMessage.animate({
 					paddingTop: '5px',
 					paddingBottom: '10px'
 				});
@@ -245,7 +268,7 @@ $('form').submit((e)=>{
 					return true;
 				} else {
 					cvvField.css( 'border-color','red' );
-					cvvField.after(errorMessage);
+					cvvField.after( cvvErrorMessage );
 					return false;
 			}
 		}
