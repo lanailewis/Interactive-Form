@@ -4,13 +4,17 @@ Opening Section
 
 $("#name").focus();
 
-// Include a text field that will be revealed when the "Other" option is selected from the "Job Role" drop down menu
+/**************
+Job Role Section
+****************/
 
 $('#other-title').hide();
-	$("#title").change((e)=>{
-		if( $(e.target).val() == "other" ) {
-			$('#other-title').show();
-		}
+
+$("#title").change((e)=>{
+	
+	if( $(e.target).val() == "other" ) {
+		$('#other-title').show();
+	}
 });
 
 
