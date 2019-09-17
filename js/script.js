@@ -14,6 +14,8 @@ $("#title").change((e)=>{
 	
 	if( $(e.target).val() == "other" ) {
 		$('#other-title').show();
+	} else {
+		$('#other-title').hide();
 	}
 });
 
@@ -91,9 +93,10 @@ const bitcoinMethod = $('#Bitcoin');
 const paypalMethod = $('#Paypal');
 
 $(selectMethod).hide();
-$(creditCardDiv).hide();
+$(creditCardDiv).show();
 $(bitcoinMethod).hide();
 $(paypalMethod).hide();
+$('#payment option[value="credit card"]').attr("selected",true);
 
 // Set the 'credit card' option to show appropriate fields, hide when either two other options are selected
 
@@ -156,8 +159,6 @@ Form Validation
 //Form Validation Function containing all field validations
 
 $('form').submit((e)=>{
-
-	e.preventDefault();
 	
 	//Name Field Validation
 
@@ -215,19 +216,14 @@ $('form').submit((e)=>{
 		}
 	}
 	
-	validateActivity()
-
-	//$('.activities').on('click', function() {
-	//		validateActivity();
-	//	});
-	
 	//Payment Section Validation
 	
 	//Credit Card Number Check Function
 		
-		function paymentCheck() {
+		if ( $(e.target).val() === "credit card" ) {
+			function paymentCheck() {
 				const ccNumberField = $( '#cc-num' );
-				const ccNumberFormat = /[0-9]{16,}/;
+				const ccNumberFormat = /[0-9]{13,16,}/;
 				ccErrorMessage.animate({
 					paddingTop: '5px',
 					paddingBottom: '10px'
@@ -241,6 +237,7 @@ $('form').submit((e)=>{
 					return false;
 			}
 		}
+	};
 		paymentCheck()
 		
 		//Zip Code Check Function
@@ -283,6 +280,12 @@ $('form').submit((e)=>{
 			}
 		}
 		cvvCheck()
+		
+		if(no errors) {
+			e.preventDefault();
+		} else {
+			page refresh?
+		}
 });
 
 	
