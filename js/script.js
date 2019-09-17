@@ -139,7 +139,7 @@ Form Validation
 	//Credit Card Number Field Error Message
 	
 	const ccErrorMessage = $('<p></p>');
-	ccErrorMessage.text('Please enter a valid 16-digit credit card number');
+	ccErrorMessage.text('Please enter a valid credit card number');
 	ccErrorMessage.css({'color': 'red', 'margin': '0px', 'fontStyle': 'italic'});
 	
 	//Zip Code Field Error Message
@@ -156,10 +156,8 @@ Form Validation
 	
 	/****************************************************************/
 
-//Form Validation Function containing all field validations
+//Form Validation Functions
 
-$('form').submit((e)=>{
-	
 	//Name Field Validation
 
 	function nameFieldCheck() {
@@ -176,9 +174,7 @@ $('form').submit((e)=>{
 			nameField.css( 'borderColor','red' );
 			return false;
 		}
-		nameErrorMessage.empty();
 	}
-	nameFieldCheck()
 	
 	//Email Field Validation
 	
@@ -198,7 +194,6 @@ $('form').submit((e)=>{
 			return false;
 		}
 	}
-	emailFieldCheck()
 	
 	//Activity Section Validation
 
@@ -220,10 +215,10 @@ $('form').submit((e)=>{
 	
 	//Credit Card Number Check Function
 		
-		if ( $(e.target).val() === "credit card" ) {
+		if ( $('#payment').val() === "credit card" ) {
 			function paymentCheck() {
 				const ccNumberField = $( '#cc-num' );
-				const ccNumberFormat = /[0-9]{13,16,}/;
+				const ccNumberFormat = /[0-9]{13,16}/;
 				ccErrorMessage.animate({
 					paddingTop: '5px',
 					paddingBottom: '10px'
@@ -235,10 +230,9 @@ $('form').submit((e)=>{
 					ccNumberField.css( 'border-color','red' );
 					ccNumberField.after( ccErrorMessage );
 					return false;
+				}
 			}
 		}
-	};
-		paymentCheck()
 		
 		//Zip Code Check Function
 
@@ -258,7 +252,6 @@ $('form').submit((e)=>{
 					return false;
 			}
 		}
-		zipCodeCheck()
 		
 		//CVV Check Function
 
@@ -279,24 +272,32 @@ $('form').submit((e)=>{
 					return false;
 			}
 		}
-		cvvCheck()
 		
-		if(no errors) {
-			e.preventDefault();
-		} else {
-			page refresh?
-		}
-});
-
-	
-
-
-
-
-
-
-	
-
+/**************
+Form Validation
+**************/
+			
+	$('form').submit((e)=>{
+		
+		function formValidator() {
+			
+			if ( ($('#payment').val() === "credit card" ) ) {
+				paymentCheck();
+				zipCodeCheck();
+				cvvCheck();
+			} else {  
+				return false;
+				}
+			}
+			
+			if (validateActivity && nameFieldCheck && emailFieldCheck){
+				return true;
+			} else {
+				return false;
+			}
+		
+		formValidator()
+	});
 
 
 
