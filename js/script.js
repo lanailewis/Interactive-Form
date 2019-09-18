@@ -285,6 +285,7 @@ Form Validation
 	
 function formValidator() {
     if ( ($('#payment').val() === "credit card" ) ) {
+		
         paymentCheck();
 		zipCodeCheck();
 		cvvCheck();
@@ -303,7 +304,7 @@ function formValidator() {
     }
 };
 
-//Form Submit
+//Form Submit Function
 
 $('form').submit((e)=>{
     if ( formValidator() ){ 
