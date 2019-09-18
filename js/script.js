@@ -281,31 +281,51 @@ Form Validation
 Form Validation
 **************/
 			
-	//Form Validation Function
+//Form Validation Function
 	
-	function formValidator() {
-			if ( ($('#payment').val() === "credit card" ) ) {
-				paymentCheck();
-				zipCodeCheck();
-				cvvCheck();
-				nameFieldCheck();
-				emailFieldCheck();
-				validateActivity();
-			} else if ( ($('#payment').val() !== "credit card" ) ){  
-				nameFieldCheck();
-				emailFieldCheck();
-				validateActivity();
-			} else {
-				e.preventDefault();
-			}
-		};	
+function formValidator() {
+    if ( ($('#payment').val() === "credit card" ) ) {
+        paymentCheck();
+		zipCodeCheck();
+		cvvCheck();
 
-	//Form Submit
-	
-	$('form').submit((e)=>{
-		e.preventDefault();
-		formValidator();
-	});
+        if ( nameFieldCheck() && emailFieldCheck() && validateActivity() && paymentCheck() && zipCodeCheck() && cvvCheck() ) {
+            return true;
+        } else { 
+            return false;
+        }
+    } else {  
+        if ( nameFieldCheck() && emailFieldCheck() && validateActivity() ) { 
+            return true;
+        } else { 
+            return false;
+        }
+    }
+};
+
+//Form Submit
+
+$('form').submit((e)=>{
+    if ( formValidator() ){ 
+      return true;
+    } else { 
+      e.preventDefault();
+      
+        if ( ($('#payment').val() === "credit card" ) ) {
+            cvvCheck();
+            paymentCheck();
+            zipCodeCheck();
+            validateActivity();
+            nameFieldCheck();
+            emailFieldCheck();
+        
+        } else {  
+            validateActivity();
+            nameFieldCheck();
+            emailFieldCheck();
+        }
+    }
+});
 
 
 
