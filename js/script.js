@@ -1,3 +1,8 @@
+/************************************************
+Treehouse TechDegree Project 3 - Interactive Form
+Written by Lanai Lewis
+************************************************/
+
 /***************
 Opening Section
 ***************/
@@ -258,7 +263,6 @@ Form Validation
 		function cvvCheck() {
 				const cvvField = $( '#cvv' );
 				const cvvFormat = /[0-9]{3,}/;
-				
 				cvvErrorMessage.animate({
 					paddingTop: '5px',
 					paddingBottom: '10px'
@@ -277,26 +281,30 @@ Form Validation
 Form Validation
 **************/
 			
-	$('form').submit((e)=>{
-		
-		function formValidator() {
-			
+	//Form Validation Function
+	
+	function formValidator() {
 			if ( ($('#payment').val() === "credit card" ) ) {
 				paymentCheck();
 				zipCodeCheck();
 				cvvCheck();
-			} else {  
-				return false;
-				}
-			}
-			
-			if (validateActivity && nameFieldCheck && emailFieldCheck){
-				return true;
+				nameFieldCheck();
+				emailFieldCheck();
+				validateActivity();
+			} else if ( ($('#payment').val() !== "credit card" ) ){  
+				nameFieldCheck();
+				emailFieldCheck();
+				validateActivity();
 			} else {
-				return false;
+				e.preventDefault();
 			}
-		
-		formValidator()
+		};	
+
+	//Form Submit
+	
+	$('form').submit((e)=>{
+		e.preventDefault();
+		formValidator();
 	});
 
 
