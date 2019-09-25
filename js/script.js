@@ -29,20 +29,35 @@ $("#title").change((e)=>{
 T-Shirt Section
 ***************/
 
+const $selectColorOption = $('<option value="select-color">Please select a T-shirt Theme</option>');
+$('#color').prepend($selectColorOption);
+
+$('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"],[value="darkslategrey"],[value="gold"],[value="cornflowerblue"]').hide();
+
+$('#color option[value="select-color"]').attr('selected', true);
+
 $("#design").change((e)=>{
-	
+		$('#theme').hide();
 		if ( $(e.target).val() == "js puns" ) { 
 			$('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').hide();
-			$('#color option[value="cornflower blue"],[value="darkslategrey"],[value="gold"]').show();
-			$('#color option[value="cornflower blue"]').attr('selected', true);
+			$('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').show();
+			$('#color option[value="cornflowerblue"]').attr('selected', true);
 			$('#color option[value="tomato"]').attr('selected', false);
-        }
-		if ( $(e.target).val() == "heart js" ) { 
+			$('#color option[value="select-color"]').attr('selected', false);
+			$('#color option[value="select-color"]').hide();
+			
+        } else if ( $(e.target).val() == "heart js" ) { 
 			$('#color option[value="cornflowerblue"],[value="darkslategrey"],[value="gold"]').hide();
 			$('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"]').show();
 			$('#color option[value="tomato"]').attr('selected', true);
-			$('#color option[value="cornflower blue"]').attr('selected', false);
-        }
+			$('#color option[value="cornflowerblue"]').attr('selected', false);
+			$('#color option[value="select-color"]').hide();
+			$('#color option[value="select-color"]').attr('selected', false);
+			
+        } else {
+			$('#color option[value="tomato"],[value="steelblue"],[value="dimgrey"],[value="darkslategrey"],[value="gold"],[value="cornflowerblue"]').hide();
+			$('#color option[value="select-color"]').attr('selected', true);
+		}
 		
 		
 });
